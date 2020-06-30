@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"reflect"
 	"testing"
 	"shop/models"
 )
@@ -27,7 +28,7 @@ func TestGetItem(t *testing.T) {
 	testMapDB := NewMapDB()
 
 	sample := &models.Item{
-		ID: 0,
+		ID: 1,
 		Name: "test-item-1239",
 		Price: 7483,
 	}
@@ -37,13 +38,18 @@ func TestGetItem(t *testing.T) {
 		t.Error("CreateItem failed", err)
 	}
 
+	if !reflect.DeepEqual(want, sample) {
+		t.Errorf("CreateItem failed: want: %v, sample: %v", want, sample)
+	}
+
+
 	got, err := testMapDB.GetItem(want.ID)
 	if err != nil {
 		t.Error("GetItem failed", err)
 	}
 
-	if got != want {
-		t.Errorf("TestGetItem failed: got: %v, want: %v", got, want)
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("GetItem failed: got: %v, want: %v", got, want)
 	}
 }
 
@@ -101,7 +107,7 @@ func TestUpdateItem(t *testing.T) {
 		t.Error("UpdateItem failed", err)
 	}
 
-	if resultItem != updateItem {
+	if !reflect.DeepEqual(resultItem, updateItem) {
 		t.Errorf("UpdateItem was not successfull, updateItem=%v , resultItem=%v", updateItem, resultItem)
 	}
 }
