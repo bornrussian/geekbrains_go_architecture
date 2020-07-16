@@ -33,6 +33,8 @@ func (s *ItemRepositoryService) CreateItem(ctx context.Context, req *pb.CreateIt
 
 	s.db[s.maxID] = newItem
 
+	log.Println("Created Item:", s.maxID, newItem.Name, newItem.Price)
+
 	return &pb.Item{
 		Id:    s.maxID,
 		Name:  newItem.Name,
@@ -49,6 +51,8 @@ func (s *ItemRepositoryService) UpdateItem(ctx context.Context, req *pb.UpdateIt
 	item.Name = req.Name
 	item.Price = req.Price
 
+	log.Println("Updated Item:", item.ID, item.Name, item.Price)
+
 	return &pb.Item{
 		Id:    item.ID,
 		Name:  item.Name,
@@ -61,6 +65,8 @@ func (s *ItemRepositoryService) GetItem(ctx context.Context, req *pb.GetItemRequ
 	if !ok {
 		return nil, status.Error(codes.NotFound, "item not found")
 	}
+
+	log.Println("Get Item:", item.ID, item.Name, item.Price)
 
 	return &pb.Item{
 		Id:    item.ID,
@@ -76,6 +82,8 @@ func (s *ItemRepositoryService) DeleteItem(ctx context.Context, req *pb.DeleteIt
 	}
 
 	delete(s.db, req.Id)
+
+	log.Println("Deleted Item:", item.ID, item.Name, item.Price)
 
 	return &pb.Item{
 		Id:    item.ID,
