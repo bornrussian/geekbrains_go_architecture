@@ -1,0 +1,20 @@
+server:
+  debug: on
+  listen: ":8080"
+  domain: "localhost"
+
+telegram:
+  bot-token: "12341234124"
+  chat-id: 12341234
+  msg-template-file: "./template/telegram.tmpl"
+
+email:
+  smtp-server: "smtp.yandex.ru"
+  port: 587
+  from: "Your Sample Golang Internet Site"
+  user: "12341234124@yandex.ru"
+  password: "123421342134"
+  msg-template-file: "./template/email.tmpl"
+
+items-storage-grpc-server:
+  address: "localhost:9094"

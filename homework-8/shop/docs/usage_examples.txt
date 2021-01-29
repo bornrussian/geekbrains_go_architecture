@@ -1,0 +1,4 @@
+curl -X POST -H "Content-Type:application/json" -d '{"name":"good1", "price":100}' http://localhost:8080/item
+curl -X POST -H "Content-Type:application/json" -d '{"name":"good2", "price":200}' http://localhost:8080/item
+curl -X POST -H "Content-Type:application/json" -d '{"name":"good3", "price":300}' http://localhost:8080/item
+curl -X POST -H "Content-Type:application/json" -d '{"phone":"+79130000000", "email":"12341234124@gmail.com", "item_ids":[1,3]}' http://localhost:8080/order
