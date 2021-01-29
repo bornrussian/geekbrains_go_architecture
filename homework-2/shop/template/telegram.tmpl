@@ -1,0 +1,5 @@
+Client: {{.Phone}}
+Email: {{.Email}}
+Ordered:
+  {{range .ItemIDs}}http://localhost:8080/item/{{.}}
+  {{end}}
