@@ -1,0 +1,10 @@
+To: {{.Email}}
+Subject: New Order ID {{.ID}}
+
+Your order:
+  {{range .ItemIDs}}http://localhost:8080/item/{{.}}
+  {{end}}
+Your contact phone is {{.Phone}}
+We will call you.
+Thanks for order.
+
