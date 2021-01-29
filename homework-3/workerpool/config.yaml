@@ -1,0 +1,12 @@
+victim:
+  http-url: "http://serene-meadow-63779.herokuapp.com/"
+
+options:
+  threads: 4                      # simultaneous number of workers
+
+  #mode: "until_timeout"           # infinite requests until timeout
+  #until: 10                       # 'seconds'
+
+  mode: "until_requests_sent"     # limited number of requests
+  until: 50                       # 'requests'
+
